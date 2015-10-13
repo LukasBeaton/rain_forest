@@ -1,6 +1,20 @@
 = Rain Forest: an AWS ecosystem
 
-Rain Forest is a collection of simplified adaptors for Amazon Web Services and relies on the [aws-sdk Gem](https://rubygems.org/gems/aws-sdk). The intention is for Rain Forest to one day support many of Amazon's web services. However, at the moment there is only support for S3.
+Rain Forest is a collection of simplified adaptors for Amazon Web Services and relies on the [aws-sdk](https://rubygems.org/gems/aws-sdk) Gem. The intention is for Rain Forest to one day support many of Amazon's web services. However, at the moment there is only support for S3.
+
+== Installation
+
+Use Ruby Gems to install rain_forest to get started:
+
+    $ gem install rain_forest
+
+There are 4 ENVIRONMENT variables which are used to configure Rain Forest to your AWS account.
+
+    ENV["rainforest_aws_akid"]    = "YOUR_ACCESS_KEY_ID"
+    ENV["rainforest_aws_secret"]  = "YOUR_SECRET_ACCESS_KEY"
+    ENV["rainforest_aws_region"]  = "YOUR_BUCKET_REGION"
+    ENV["rainforest_aws_bucket"]  = "YOUR_BUCKET"
+
 
 == Contributing to rain_forest
  
