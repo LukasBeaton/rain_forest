@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "rain_forest"
   gem.homepage = "http://github.com/LukasBeaton/rain_forest"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: A simplified adaptor for Amazon Web Services}
-  gem.description = %Q{TODO: A simplified adaptor for Amazon Web Services. Only S3 is supported at the moment.}
+  gem.summary = %Q{A simplified adaptor for Amazon Web Services}
+  gem.description = %Q{A simplified adaptor for Amazon Web Services. Only S3 is supported at the moment.}
   gem.email = "lukas.beaton@gmail.com"
   gem.authors = ["Lukas Beaton"]
   # dependencies defined in Gemfile
