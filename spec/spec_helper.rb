@@ -2,6 +2,9 @@ require 'rubygems'
 require 'bundler'
 Bundler.require(:default, :development)
 
+require 'coveralls'
+Coveralls.wear!
+
 require 'rain_forest'
 
 module SimpleCov::Configuration
