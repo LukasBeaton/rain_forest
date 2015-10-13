@@ -3,9 +3,9 @@ module RainForest
     attr_accessor :bucket, :client
 
     def initialize
-      region =  ENV['rainforest_region']
-      credentials = ::Aws::Credentials.new(ENV['rainforest_akid'], ENV['rainforest_secret'])
-      @bucket = ENV['rainforest_bucket']
+      region =  ENV['rainforest_aws_region']
+      credentials = ::Aws::Credentials.new(ENV['rainforest_aws_akid'], ENV['rainforest_aws_secret'])
+      @bucket = ENV['rainforest_aws_bucket']
       @client = ::Aws::S3::Client.new(region: region,  credentials: credentials)
     end
 
@@ -29,7 +29,6 @@ module RainForest
       self.new.delete_objects(prefix)
     end
 
-  private
     def write(storage_key, data, permission='public-read')
       begin
         @client.put_object(bucket: @bucket, key: storage_key, body: data, acl: permission)
