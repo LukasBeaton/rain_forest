@@ -18,6 +18,7 @@ There are 4 ENVIRONMENT variables which are used to configure Rain Forest to you
 In a typical Rails environment you could use a YML file and an initializer to configure Rain Forest as follows:
 
 config/rain_forest.yml
+
     rain_forest:
       development:
         aws_akid: "YOUR_ACCESS_KEY_ID"
@@ -36,6 +37,7 @@ config/rain_forest.yml
         aws_bucket: "YOUR_BUCKET"
 
 config/initializers/rain_forest.rb
+
     config = YAML.load_file("#{Rails.root}/config/rain_forest.yml")
     environment = Rails.env || "development"
 
