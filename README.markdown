@@ -8,13 +8,43 @@ Use Ruby Gems to install rain_forest to get started:
 
     $ gem install rain_forest
 
-There are 4 ENVIRONMENT variables which are used to configure Rain Forest to your AWS account.
+There are 4 ENVIRONMENT variables which are used to configure Rain Forest to your AWS account:
 
-    ENV["rainforest_aws_akid"]    = "YOUR_ACCESS_KEY_ID"
-    ENV["rainforest_aws_secret"]  = "YOUR_SECRET_ACCESS_KEY"
-    ENV["rainforest_aws_region"]  = "YOUR_BUCKET_REGION"
-    ENV["rainforest_aws_bucket"]  = "YOUR_BUCKET"
+    ENV["rain_forest_aws_akid"]    = "YOUR_ACCESS_KEY_ID"
+    ENV["rain_forest_aws_secret"]  = "YOUR_SECRET_ACCESS_KEY"
+    ENV["rain_forest_aws_region"]  = "YOUR_BUCKET_REGION"
+    ENV["rain_forest_aws_bucket"]  = "YOUR_BUCKET"
 
+In a typical Rails environment you could use a YML file and an initializer to configure Rain Forest as follows:
+
+config/rain_forest.yml
+
+    rain_forest:
+      development:
+        aws_akid: "YOUR_ACCESS_KEY_ID"
+        aws_secret: "YOUR_SECRET_ACCESS_KEY"
+        aws_region: "YOUR_BUCKET_REGION"
+        aws_bucket: "YOUR_BUCKET"
+      test:
+        aws_akid: "YOUR_ACCESS_KEY_ID"
+        aws_secret: "YOUR_SECRET_ACCESS_KEY"
+        aws_region: "YOUR_BUCKET_REGION"
+        aws_bucket: "YOUR_BUCKET"
+      production:
+        aws_akid: "YOUR_ACCESS_KEY_ID"
+        aws_secret: "YOUR_SECRET_ACCESS_KEY"
+        aws_region: "YOUR_BUCKET_REGION"
+        aws_bucket: "YOUR_BUCKET"
+
+config/initializers/rain_forest.rb
+
+    config = YAML.load_file("#{Rails.root}/config/rain_forest.yml")
+    environment = Rails.env || "development"
+
+    options = config[environment]
+    options.each do |k,v|
+      ENV["rain_forest#{k}"] = options[k]
+    end
 
 ## Contributing to rain_forest
  

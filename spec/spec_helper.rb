@@ -26,10 +26,10 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-ENV["rainforest_aws_akid"]    = "DUMMY_rainforest_aws_akid"
-ENV["rainforest_aws_secret"]  = "DUMMY_rainforest_aws_secret"
-ENV["rainforest_aws_region"]  = "DUMMY_rainforest_aws_region"
-ENV["rainforest_aws_bucket"]  = "DUMMY_rainforest_aws_bucket"
+ENV["rain_forest_aws_akid"]    = "DUMMY_rain_forest_aws_akid"
+ENV["rain_forest_aws_secret"]  = "DUMMY_rain_forest_aws_secret"
+ENV["rain_forest_aws_region"]  = "DUMMY_rain_forest_aws_region"
+ENV["rain_forest_aws_bucket"]  = "DUMMY_rain_forest_aws_bucket"
 
 RSpec.configure do |config|
 end
