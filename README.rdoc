@@ -1,6 +1,6 @@
-= Rain Forest: A simplified ecosystem of adaptors for AWS
+= Rain Forest: an AWS ecosystem
 
-Rain Forest is a simplified ecosystem of adaptors for Amazon Web Services and relies on the [aws-sdk Gem](https://rubygems.org/gems/aws-sdk). The intention is for Rain Forest to one day support many of Amazon's web services. However, at the moment there is only support for S3.
+Rain Forest is a collection of simplified adaptors for Amazon Web Services and relies on the [aws-sdk Gem](https://rubygems.org/gems/aws-sdk). The intention is for Rain Forest to one day support many of Amazon's web services. However, at the moment there is only support for S3.
 
 == Contributing to rain_forest
  
