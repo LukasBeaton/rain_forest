@@ -41,9 +41,9 @@ config/initializers/rain_forest.rb
     config = YAML.load_file("#{Rails.root}/config/rain_forest.yml")
     environment = Rails.env || "development"
 
-    options = config[environment]
+    options = config['rain_forest'][environment]
     options.each do |k,v|
-      ENV["rain_forest#{k}"] = options[k]
+      ENV["rain_forest_#{k}"] = v
     end
 
 ## Contributing to rain_forest
