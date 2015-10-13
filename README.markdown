@@ -18,7 +18,6 @@ There are 4 ENVIRONMENT variables which are used to configure Rain Forest to you
 In a typical Rails environment you could use a YML file and an initializer to configure Rain Forest as follows:
 
 config/rain_forest.yml
-
     rain_forest:
       development:
         aws_akid: "YOUR_ACCESS_KEY_ID"
@@ -37,7 +36,6 @@ config/rain_forest.yml
         aws_bucket: "YOUR_BUCKET"
 
 config/initializers/rain_forest.rb
-
     config = YAML.load_file("#{Rails.root}/config/rain_forest.yml")
     environment = Rails.env || "development"
 
@@ -46,8 +44,15 @@ config/initializers/rain_forest.rb
       ENV["rain_forest_#{k}"] = v
     end
 
-## Contributing to rain_forest
- 
+## Available Methods
+    RainForest::S3.write(storage_key, data, permission='public-read')
+    RainForest::S3.read(storage_key)
+    RainForest::S3.move(source_key, dest_key)
+    RainForest::S3.content_length(storage_key)
+    RainForest::S3.delete_objects(prefix)
+    
+
+## Contributing to Rain Forest 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
