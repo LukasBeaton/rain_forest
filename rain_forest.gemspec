@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -26,6 +27,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/rain_forest.rb",
     "lib/rain_forest/s3.rb",
+    "rain_forest.gemspec",
     "spec/rain_forest/s3_spec.rb",
     "spec/spec_helper.rb"
   ]
