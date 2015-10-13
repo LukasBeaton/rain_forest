@@ -1,5 +1,7 @@
 # Rain Forest: an AWS ecosystem
 
+[![Build Status](https://travis-ci.org/LukasBeaton/rain_forest.svg?branch=master)](https://travis-ci.org/LukasBeaton/rain_forest)
+
 Rain Forest is a collection of simplified adaptors for Amazon Web Services and relies on the [aws-sdk Gem](https://rubygems.org/gems/aws-sdk). The intention is for Rain Forest to one day support many of Amazon's web services. However, at the moment there is only support for S3.
 
 ## Installation
