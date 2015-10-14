@@ -1,3 +1,5 @@
+require 'aws-sdk'
+
 module RainForest 
   class S3 
     attr_accessor :bucket, :client

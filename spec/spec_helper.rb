@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler'
-Bundler.require(:default, :development)
+Bundler.require(:development)
 
 require 'coveralls'
 Coveralls.wear!
