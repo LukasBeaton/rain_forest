@@ -11,8 +11,8 @@ module RainForest
       @client = ::Aws::S3::Client.new(region: region,  credentials: credentials)
     end
 
-    def self.write(storage_key, data, permission='public-read')
-      self.new.write(storage_key, data, permission)
+    def self.write(storage_key, data, options={})
+      self.new.write(storage_key, data, options)
     end
 
     def self.read(storage_key)
@@ -31,9 +31,16 @@ module RainForest
       self.new.delete_objects(prefix)
     end
 
-    def write(storage_key, data, permission='public-read')
+    def write(storage_key, data, options={})
+      attrs = {
+        bucket: @bucket,
+        key: storage_key,
+        body: data,
+        acl: 'public-read'
+      }.merge(options)
+
       begin
-        @client.put_object(bucket: @bucket, key: storage_key, body: data, acl: permission)
+        @client.put_object(attrs)
       rescue Exception => e
         return false, e.message 
       end
