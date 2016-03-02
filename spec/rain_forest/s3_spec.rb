@@ -19,6 +19,15 @@ describe RainForest::S3 do
       expect(message).to eq(nil)
     end
 
+    it "accepts other options" do
+      expect(client).to receive(:put_object).with(bucket: ENV["rain_forest_aws_bucket"], key: "STORAGE-KEY", body: "Some test data...", acl: "public-read", content_encoding: 'utf8').and_return(true)
+
+      success, message = RainForest::S3.write("STORAGE-KEY", "Some test data...", content_encoding: 'utf8')
+
+      expect(success).to eq(true)
+      expect(message).to eq(nil)
+    end
+
     it "handles errors" do
       expect(client).to receive(:put_object).with(bucket: ENV["rain_forest_aws_bucket"], key: "STORAGE-KEY", body: "Some test data...", acl: "public-read").and_raise(Exception.new("KABOOM!"))
 
