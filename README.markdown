@@ -14,12 +14,12 @@ Use Ruby Gems to install rain_forest to get started:
 
 There are 4 ENVIRONMENT variables which are used to configure Rain Forest to your AWS account:
 
-    ENV["rain_forest_aws_akid"]    = "YOUR_ACCESS_KEY_ID"
-    ENV["rain_forest_aws_secret"]  = "YOUR_SECRET_ACCESS_KEY"
-    ENV["rain_forest_aws_region"]  = "YOUR_BUCKET_REGION"
-    ENV["rain_forest_aws_bucket"]  = "YOUR_BUCKET"
+    ENV["RAIN_FOREST_AWS_AKID"]    = "YOUR_ACCESS_KEY_ID"
+    ENV["RAIN_FOREST_AWS_SECRET"]  = "YOUR_SECRET_ACCESS_KEY"
+    ENV["RAIN_FOREST_AWS_REGION"]  = "YOUR_BUCKET_REGION"
+    ENV["RAIN_FOREST_AWS_BUCKET"]  = "YOUR_BUCKET"
 
-In a typical Rails environment you could use a YML file and an initializer to configure Rain Forest as follows:
+In a typical Rails application you could use a YML file and an initializer to configure Rain Forest as follows:
 
 config/rain_forest.yml
 
@@ -47,7 +47,7 @@ config/initializers/rain_forest.rb
 
     options = config['rain_forest'][environment]
     options.each do |k,v|
-      ENV["rain_forest_#{k}"] = v
+      ENV["RAIN_FOREST_#{k}".upcase] = v
     end
 
 ## Available Methods

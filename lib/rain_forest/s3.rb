@@ -5,9 +5,20 @@ module RainForest
     attr_accessor :bucket, :client
 
     def initialize
-      region =  ENV['rain_forest_aws_region']
-      credentials = ::Aws::Credentials.new(ENV['rain_forest_aws_akid'], ENV['rain_forest_aws_secret'])
-      @bucket = ENV['rain_forest_aws_bucket']
+      region = ENV['RAIN_FOREST_AWS_REGION']
+      region = ENV['rain_forest_aws_region'] if region.nil?#fallback to older config
+
+      akid = ENV['RAIN_FOREST_AWS_AKID']
+      akid = ENV['rain_forest_aws_akid'] if akid.nil?#fallback to older config
+
+      secret = ENV['RAIN_FOREST_AWS_SECRET']
+      secret = ENV['rain_forest_aws_secret'] if secret.nil?#fallback to older config
+
+      bucket = ENV['RAIN_FOREST_AWS_BUCKET']
+      bucket = ENV['rain_forest_aws_bucket'] if bucket.nil?#fallback to older config
+
+      credentials = ::Aws::Credentials.new(akid, secret)
+      @bucket = ENV['RAIN_FOREST_AWS_BUCKET']
       @client = ::Aws::S3::Client.new(region: region,  credentials: credentials)
     end
 
