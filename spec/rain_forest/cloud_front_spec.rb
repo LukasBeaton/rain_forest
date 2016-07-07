@@ -52,15 +52,14 @@ describe RainForest::CloudFront do
       expect(success).to eq(true)
     end
 
-=begin
     it "handles errors" do
-      expect(client).to receive(:put_object).with(bucket: ENV["RAIN_FOREST_AWS_BUCKET"], key: "STORAGE-KEY", body: "Some test data...", acl: "public-read").and_raise(Exception.new("KABOOM!"))
+      expect(client).to receive(:get_distribution).with(id: 'DISTRIBUTION_ID').and_return(cloudfront_distribution)
+      expect(client).to receive(:update_distribution).and_raise(Exception.new("KABOOM!"))
 
-      success, message = RainForest::S3.write("STORAGE-KEY", "Some test data...")
+      success, message = RainForest::CloudFront.update_origin('DISTRIBUTION_ID', "/NEW_ORIGIN")
 
-      expect(success).to eq(false)
       expect(message).to eq("KABOOM!")
+      expect(success).to eq(false)
     end
-=end
   end
 end
