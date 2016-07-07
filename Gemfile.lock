@@ -9,6 +9,7 @@ GEM
     aws-sdk-resources (2.1.14)
       aws-sdk-core (= 2.1.14)
     builder (3.2.2)
+    byebug (9.0.4)
     coveralls (0.8.3)
       json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
@@ -98,11 +99,15 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (= 2.1.14)
   bundler (~> 1.0)
+  byebug
   coveralls
   jeweler (~> 2.0.1)
   rdoc (~> 3.12)
   rspec (= 2.14.0)
   simplecov
 
+RUBY VERSION
+   ruby 2.0.0p353
+
 BUNDLED WITH
-   1.10.6
+   1.12.4

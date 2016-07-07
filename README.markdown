@@ -4,7 +4,10 @@
 [![Build Status](https://travis-ci.org/LukasBeaton/rain_forest.svg?branch=master)](https://travis-ci.org/LukasBeaton/rain_forest)
 [![Coverage Status](https://coveralls.io/repos/LukasBeaton/rain_forest/badge.svg?branch=master&service=github)](https://coveralls.io/github/LukasBeaton/rain_forest?branch=master)
 
-Rain Forest is a collection of simplified adaptors for Amazon Web Services and relies on the [aws-sdk Gem](https://rubygems.org/gems/aws-sdk). The intention is for Rain Forest to one day support many of Amazon's web services. However, at the moment there is only support for S3.
+Rain Forest is a collection of simplified adaptors for Amazon Web Services and relies on the [aws-sdk Gem](https://rubygems.org/gems/aws-sdk). The intention is for Rain Forest to one day support many of Amazon's web services. However, at the moment there is some basic support for:
+
+* S3
+* CloudFront
 
 ## Installation
 
@@ -56,6 +59,7 @@ config/initializers/rain_forest.rb
     RainForest::S3.move(source_key, dest_key)
     RainForest::S3.content_length(storage_key)
     RainForest::S3.delete_objects(prefix)
+    RainForest::CloudFront.update_origin(distribution_id, new_origin)
     
 
 ## Contributing to Rain Forest 
