@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lukas Beaton"]
   s.date = "2016-06-13"
-  s.description = "A simplified adaptor for Amazon Web Services. Only S3 is supported at the moment."
+  s.description = "A simplified adaptor for Amazon Web Services. There is currently basic support for CloudFront and S3."
   s.email = "lukas.beaton@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -27,8 +27,10 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/rain_forest.rb",
     "lib/rain_forest/s3.rb",
+    "lib/rain_forest/cloud_front.rb",
     "rain_forest.gemspec",
     "spec/rain_forest/s3_spec.rb",
+    "spec/rain_forest/cloud_front_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/LukasBeaton/rain_forest"
