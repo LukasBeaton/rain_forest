@@ -11,6 +11,7 @@ gem 'aws-sdk', '2.1.14', require: true
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem "rspec", "2.14.0"
+  gem "byebug"
   gem 'coveralls', require: false
   gem "rdoc", "~> 3.12"
   gem "bundler", "~> 1.0"
