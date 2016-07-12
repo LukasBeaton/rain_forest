@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lukas Beaton"]
-  s.date = "2016-06-13"
-  s.description = "A simplified adaptor for Amazon Web Services. There is currently basic support for CloudFront and S3."
+  s.date = "2016-07-12"
+  s.description = "A simplified adaptor for Amazon Web Services. Only S3 is supported at the moment."
   s.email = "lukas.beaton@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -26,11 +26,11 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/rain_forest.rb",
-    "lib/rain_forest/s3.rb",
     "lib/rain_forest/cloud_front.rb",
+    "lib/rain_forest/s3.rb",
     "rain_forest.gemspec",
-    "spec/rain_forest/s3_spec.rb",
     "spec/rain_forest/cloud_front_spec.rb",
+    "spec/rain_forest/s3_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/LukasBeaton/rain_forest"
@@ -45,6 +45,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<aws-sdk>, ["= 2.1.14"])
       s.add_development_dependency(%q<rspec>, ["= 2.14.0"])
+      s.add_development_dependency(%q<byebug>, [">= 0"])
       s.add_development_dependency(%q<coveralls>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
@@ -53,6 +54,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<aws-sdk>, ["= 2.1.14"])
       s.add_dependency(%q<rspec>, ["= 2.14.0"])
+      s.add_dependency(%q<byebug>, [">= 0"])
       s.add_dependency(%q<coveralls>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
@@ -62,6 +64,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<aws-sdk>, ["= 2.1.14"])
     s.add_dependency(%q<rspec>, ["= 2.14.0"])
+    s.add_dependency(%q<byebug>, [">= 0"])
     s.add_dependency(%q<coveralls>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
