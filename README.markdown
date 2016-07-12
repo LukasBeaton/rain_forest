@@ -56,6 +56,7 @@ config/initializers/rain_forest.rb
 ## Available Methods
     RainForest::S3.write(storage_key, data, permission='public-read')
     RainForest::S3.read(storage_key)
+    RainForest::S3.copy(source_key, dest_key)
     RainForest::S3.move(source_key, dest_key)
     RainForest::S3.content_length(storage_key)
     RainForest::S3.delete_objects(prefix)

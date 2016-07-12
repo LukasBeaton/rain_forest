@@ -30,6 +30,10 @@ module RainForest
       self.new.read(storage_key)
     end
 
+    def self.copy(source_key, dest_key)
+      self.new.copy(source_key, dest_key)
+    end
+
     def self.move(source_key, dest_key)
       self.new.move(source_key, dest_key)
     end
@@ -66,6 +70,16 @@ module RainForest
       rescue Exception => e
         return false, e.message
       end
+    end
+
+    def copy(source_key, dest_key)
+      begin
+        @client.copy_object(bucket: @bucket, copy_source: "#{@bucket}/#{source_key}", key: dest_key)
+      rescue Exception => e
+        return false, e.message
+      end
+      
+      return true, nil
     end
 
     def move(source_key, dest_key)

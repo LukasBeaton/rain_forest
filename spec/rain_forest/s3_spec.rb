@@ -126,4 +126,24 @@ describe RainForest::S3 do
       expect(message).to eq("KABOOM!")
     end
   end  
+
+  describe "#copy" do
+    it "works" do
+      expect(client).to receive(:copy_object).with(bucket: ENV["RAIN_FOREST_AWS_BUCKET"], copy_source: "#{ENV["RAIN_FOREST_AWS_BUCKET"]}/SOURCE-KEY", key: "DEST-KEY")
+
+      success, message = RainForest::S3.copy("SOURCE-KEY", "DEST-KEY")
+
+      expect(success).to eq(true)
+      expect(message).to eq(nil)
+    end
+
+    it "handles errors" do
+      expect(client).to receive(:copy_object).and_raise(Exception.new("KABOOM!"))
+
+      success, message = RainForest::S3.copy("SOURCE-KEY", "DEST-KEY")
+
+      expect(success).to eq(false)
+      expect(message).to eq("KABOOM!")
+    end
+  end
 end
