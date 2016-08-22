@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rain_forest"
-  s.version = "0.4.1"
+  s.version = "0.4.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lukas Beaton"]
-  s.date = "2016-07-12"
+  s.date = "2016-08-22"
   s.description = "A simplified adaptor for Amazon Web Services. Only S3 is supported at the moment."
   s.email = "lukas.beaton@gmail.com"
   s.extra_rdoc_files = [
