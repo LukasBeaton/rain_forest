@@ -55,13 +55,12 @@ module RainForest
           }
         }
 
-        @client.create_invalidation(distribution_id, parameters)
+        resp = @client.create_invalidation(distribution_id, parameters)
 
+        return true, resp
       rescue Exception => e
         return false, e.message
       end
-
-      return true, nil
     end
   end
 end

@@ -67,6 +67,8 @@ describe RainForest::CloudFront do
     before do
       expect(SecureRandom).to receive(:hex).with(16).and_return("A_RANDOM_CALLER_REFERENCE")
     end
+
+    let(:aws_response_object){double("AWS Response Object")}
     
     it "created an invalidation" do
       expected_parameters = {
@@ -79,11 +81,11 @@ describe RainForest::CloudFront do
         }
       }
 
-      expect(client).to receive(:create_invalidation).with("DISTRIBUTION_ID", expected_parameters)
+      expect(client).to receive(:create_invalidation).with("DISTRIBUTION_ID", expected_parameters).and_return(aws_response_object)
 
-      success, message = RainForest::CloudFront.create_invalidation("DISTRIBUTION_ID", ["FIRST_PATH", "SECOND_PATH", "THIRD_PATH"])
+      success, message_or_object = RainForest::CloudFront.create_invalidation("DISTRIBUTION_ID", ["FIRST_PATH", "SECOND_PATH", "THIRD_PATH"])
 
-      expect(message).to eq(nil)
+      expect(message_or_object).to eq(aws_response_object)
       expect(success).to eq(true)
     end
 
