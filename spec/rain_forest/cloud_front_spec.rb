@@ -73,7 +73,7 @@ describe RainForest::CloudFront do
         distribution_id: "DISTRIBUTION_ID",
         invalidation_batch: {
           paths: {
-            quantity: 1,
+            quantity: 3,
             items: ["FIRST_PATH", "SECOND_PATH", "THIRD_PATH"]
           }
         }

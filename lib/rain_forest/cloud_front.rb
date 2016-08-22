@@ -14,8 +14,8 @@ module RainForest
       self.new.update_origin(distribution_id, new_origin_key)
     end
 
-    def self.create_invalidation(distribution_id, invalidate_paths)
-      self.new.create_invalidation(distribution_id, invalidate_paths)
+    def self.create_invalidation(distribution_id, invalidate_paths_array)
+      self.new.create_invalidation(distribution_id, invalidate_paths_array)
     end
 
     def update_origin(distribution_id, new_origin_key)
@@ -43,9 +43,20 @@ module RainForest
       return true, nil
     end
 
-    def create_invalidation(distribution_id, invalidate_paths, caller_reference=SecureRandom.hex(16))
+    def create_invalidation(distribution_id, invalidate_paths_array, caller_reference=SecureRandom.hex(16))
       begin
-        @client.create_invalidation
+        parameters = {
+          distribution_id: distribution_id,
+          invalidation_batch: {
+            paths: {
+              quantity: invalidate_paths_array.count,
+              items: invalidate_paths_array
+            }
+          }
+        }
+
+        @client.create_invalidation(distribution_id, parameters)
+
       rescue Exception => e
         return false, e.message
       end
