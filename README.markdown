@@ -61,6 +61,7 @@ config/initializers/rain_forest.rb
     RainForest::S3.content_length(storage_key)
     RainForest::S3.delete_objects(prefix)
     RainForest::CloudFront.update_origin(distribution_id, new_origin)
+    RainForest::CloudFront.create_invalidation(distribution_id, invalid_path_array)
     
 
 ## Contributing to Rain Forest 
