@@ -51,7 +51,8 @@ module RainForest
             paths: {
               quantity: invalidate_paths_array.count,
               items: invalidate_paths_array
-            }
+            },
+            caller_reference: caller_reference
           }
         }
 

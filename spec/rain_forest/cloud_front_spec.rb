@@ -77,7 +77,8 @@ describe RainForest::CloudFront do
           paths: {
             quantity: 3,
             items: ["FIRST_PATH", "SECOND_PATH", "THIRD_PATH"]
-          }
+          },
+          caller_reference: "A_RANDOM_CALLER_REFERENCE"
         }
       }
 
