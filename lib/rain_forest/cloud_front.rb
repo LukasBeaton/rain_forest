@@ -43,8 +43,14 @@ module RainForest
       return true, nil
     end
 
-    def create_invalidation(distribution_id, invalidate_paths)
+    def create_invalidation(distribution_id, invalidate_paths, caller_reference=SecureRandom.hex(16))
+      begin
+        @client.create_invalidation
+      rescue Exception => e
+        return false, e.message
+      end
 
+      return true, nil
     end
   end
 end
