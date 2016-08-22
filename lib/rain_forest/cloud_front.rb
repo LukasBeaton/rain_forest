@@ -56,7 +56,7 @@ module RainForest
           }
         }
 
-        resp = @client.create_invalidation(distribution_id, parameters)
+        resp = @client.create_invalidation(parameters)
 
         return true, resp
       rescue Exception => e
