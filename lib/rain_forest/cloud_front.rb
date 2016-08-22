@@ -1,4 +1,5 @@
 require 'aws-sdk'
+require 'securerandom'
 
 module RainForest 
   class CloudFront 
@@ -43,7 +44,7 @@ module RainForest
       return true, nil
     end
 
-    def create_invalidation(distribution_id, invalidate_paths_array, caller_reference=SecureRandom.hex(16))
+    def create_invalidation(distribution_id, invalidate_paths_array, caller_reference=::SecureRandom.hex(16))
       begin
         parameters = {
           distribution_id: distribution_id,
