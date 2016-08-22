@@ -14,6 +14,10 @@ module RainForest
       self.new.update_origin(distribution_id, new_origin_key)
     end
 
+    def self.create_invalidation(distribution_id, invalidate_paths)
+      self.new.create_invalidation(distribution_id, invalidate_paths)
+    end
+
     def update_origin(distribution_id, new_origin_key)
       begin
         dist = @client.get_distribution(id: distribution_id)
@@ -37,6 +41,10 @@ module RainForest
       end
       
       return true, nil
+    end
+
+    def create_invalidation(distribution_id, invalidate_paths)
+
     end
   end
 end
