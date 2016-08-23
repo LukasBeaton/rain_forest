@@ -63,6 +63,54 @@ describe RainForest::CloudFront do
     end
   end
 
+  describe "#get_distribution" do
+    let(:distribution){
+      OpenStruct.new(
+        distribution: OpenStruct.new(id: "DISTRIBUTION_ID", status: "InProgress")
+      )
+    }
+
+    it "works" do
+      expect(client).to receive(:get_distribution).with(id: 'DISTRIBUTION_ID').and_return(distribution)
+
+      success, message_or_object = RainForest::CloudFront.get_distribution('DISTRIBUTION_ID')
+
+      expect(message_or_object).to eq(distribution)
+      expect(success).to eq(true)
+    end
+
+    it "handles errors" do 
+      expect(client).to receive(:get_distribution).with(id: 'DISTRIBUTION_ID').and_raise(Exception.new("KABOOM!"))
+
+      success, message_or_object = RainForest::CloudFront.get_distribution('DISTRIBUTION_ID')
+
+      expect(message_or_object).to eq("KABOOM!")
+      expect(success).to eq(false)
+    end
+
+    describe "#get_distribution_status" do
+      it "works" do
+        expect(client).to receive(:get_distribution).with(id: 'DISTRIBUTION_ID').and_return(distribution)
+
+        success, message_or_status = RainForest::CloudFront.get_distribution_status('DISTRIBUTION_ID')
+
+        expect(message_or_status).to eq("InProgress")
+        expect(success).to eq(true)
+      end
+
+      it "handles errors" do 
+        expect(client).to receive(:get_distribution).with(id: 'DISTRIBUTION_ID').and_raise(Exception.new("KABOOM!"))
+
+        success, message_or_status = RainForest::CloudFront.get_distribution_status('DISTRIBUTION_ID')
+
+        expect(message_or_status).to eq("KABOOM!")
+        expect(success).to eq(false)
+      end
+    end
+  end
+
+
+
   describe "#create_invalidation" do
     before do
       expect(SecureRandom).to receive(:hex).with(16).and_return("A_RANDOM_CALLER_REFERENCE")
