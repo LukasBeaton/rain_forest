@@ -11,12 +11,25 @@ module RainForest
       @client = ::Aws::CloudFront::Client.new(access_key_id: akid, secret_access_key: secret, region: 'cloudfront.amazonaws.com')
     end
 
+    def self.get_distribution(distribution_id)
+      self.new.get_distribution(distribution_id)
+    end
+
     def self.update_origin(distribution_id, new_origin_key)
       self.new.update_origin(distribution_id, new_origin_key)
     end
 
     def self.create_invalidation(distribution_id, invalidate_paths_array)
       self.new.create_invalidation(distribution_id, invalidate_paths_array)
+    end
+
+    def get_distribution(distribution_id)
+      begin
+        dist = @client.get_distribution(id: distribution_id)
+        return true, dist
+      rescue Exception => e
+        return false, e.message
+      end
     end
 
     def update_origin(distribution_id, new_origin_key)
