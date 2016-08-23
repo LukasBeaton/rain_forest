@@ -87,7 +87,29 @@ describe RainForest::CloudFront do
       expect(message_or_object).to eq("KABOOM!")
       expect(success).to eq(false)
     end
+
+    describe "#get_distribution_status" do
+      it "works" do
+        expect(client).to receive(:get_distribution).with(id: 'DISTRIBUTION_ID').and_return(distribution)
+
+        success, message_or_status = RainForest::CloudFront.get_distribution_status('DISTRIBUTION_ID')
+
+        expect(message_or_status).to eq("InProgress")
+        expect(success).to eq(true)
+      end
+
+      it "handles errors" do 
+        expect(client).to receive(:get_distribution).with(id: 'DISTRIBUTION_ID').and_raise(Exception.new("KABOOM!"))
+
+        success, message_or_status = RainForest::CloudFront.get_distribution_status('DISTRIBUTION_ID')
+
+        expect(message_or_status).to eq("KABOOM!")
+        expect(success).to eq(false)
+      end
+    end
   end
+
+
 
   describe "#create_invalidation" do
     before do

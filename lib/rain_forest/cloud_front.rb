@@ -15,6 +15,16 @@ module RainForest
       self.new.get_distribution(distribution_id)
     end
 
+    def self.get_distribution_status(distribution_id)
+      success, status_or_message = self.new.get_distribution(distribution_id)
+
+      if success
+        return success, status_or_message.distribution.status
+      else
+        return success, status_or_message
+      end
+    end
+
     def self.update_origin(distribution_id, new_origin_key)
       self.new.update_origin(distribution_id, new_origin_key)
     end
