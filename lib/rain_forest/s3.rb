@@ -46,6 +46,10 @@ module RainForest
       self.new.delete_objects(prefix)
     end
 
+    def self.set_index_document(index_document)
+      self.new.set_index_document(index_document)
+    end
+
     def write(storage_key, data, options={})
       attrs = {
         bucket: @bucket,
@@ -118,5 +122,23 @@ module RainForest
         return -1
       end
     end    
+
+    def set_index_document(index_document)
+      begin
+        resp = @client.put_bucket_website(
+          bucket: @bucket,
+          content_md5: "",
+          website_configuration: {
+            index_document: {
+              suffix: index_document
+            }
+          }
+        )
+      rescue Exception => e
+        return false, e.message
+      end
+      
+      return true, nil
+    end
   end
 end
