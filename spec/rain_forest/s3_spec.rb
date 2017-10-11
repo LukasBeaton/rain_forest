@@ -146,4 +146,32 @@ describe RainForest::S3 do
       expect(message).to eq("KABOOM!")
     end
   end
+
+  describe "#set_index_document" do
+    it "works" do
+      expect(client).to receive(:put_bucket_website).with(
+        bucket: ENV["RAIN_FOREST_AWS_BUCKET"], 
+        content_md5: "",
+        website_configuration: {
+          index_document: {
+            suffix: "INDEX-DOCUMENT"
+          }
+        }
+      )
+
+      success, message = RainForest::S3.set_index_document("INDEX-DOCUMENT")
+
+      expect(success).to eq(true)
+      expect(message).to eq(nil)
+    end
+
+    it "handles errors" do
+      expect(client).to receive(:put_bucket_website).and_raise(Exception.new("KABOOM!"))
+
+      success, message = RainForest::S3.set_index_document("INDEX-DOCUMENT")
+
+      expect(success).to eq(false)
+      expect(message).to eq("KABOOM!")
+    end
+  end
 end
