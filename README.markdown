@@ -60,6 +60,7 @@ config/initializers/rain_forest.rb
     RainForest::S3.move(source_key, dest_key)
     RainForest::S3.content_length(storage_key)
     RainForest::S3.delete_objects(prefix)
+    RainForest::S3.set_index_document(index_document)
     RainForest::CloudFront.get_distribution(distribution_id)
     RainForest::CloudFront.get_distribution_status(distribution_id)
     RainForest::CloudFront.update_origin(distribution_id, new_origin)
