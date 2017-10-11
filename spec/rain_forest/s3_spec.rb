@@ -151,7 +151,6 @@ describe RainForest::S3 do
     it "works" do
       expect(client).to receive(:put_bucket_website).with(
         bucket: ENV["RAIN_FOREST_AWS_BUCKET"], 
-        content_md5: "",
         website_configuration: {
           index_document: {
             suffix: "INDEX-DOCUMENT"

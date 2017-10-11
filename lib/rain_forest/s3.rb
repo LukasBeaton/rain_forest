@@ -127,7 +127,6 @@ module RainForest
       begin
         resp = @client.put_bucket_website(
           bucket: @bucket,
-          content_md5: "",
           website_configuration: {
             index_document: {
               suffix: index_document
